@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "revalidation",
+    "libraryId": "67785cad-64ab-4755-a5e9-08cff926e257",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "Revalidation",
+    "solutionShortDescription": "Revalidation description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "revalidation-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/revalidation/RevalidationWebPart.js",
+          "manifest": "./src/webparts/revalidation/RevalidationWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RevalidationWebPartStrings": "lib/webparts/revalidation/loc/{locale}.js"
+  }
+}
