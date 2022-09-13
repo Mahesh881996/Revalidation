@@ -1,3 +1,10 @@
 #spSiteHeader,#sp-appBar,#CommentsWrapper,footer,[data-automation-id="pageHeader"]{
     display:none;
 }
+.j_c_50a7110f{
+    width: 100%;
+}
+.required:after {
+    content:" *";
+    color: red;
+  }

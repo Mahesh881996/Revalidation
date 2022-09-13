@@ -1,7 +1,7 @@
 {
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
-    "isCreatingSolution": true,
+    "isCreatingSolution": false,
     "version": "1.15.2",
     "libraryName": "revalidation",
     "libraryId": "67785cad-64ab-4755-a5e9-08cff926e257",

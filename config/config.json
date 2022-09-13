@@ -9,10 +9,20 @@
           "manifest": "./src/webparts/revalidation/RevalidationWebPart.manifest.json"
         }
       ]
+    },
+    "new-reval-form-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/newRevalForm/NewRevalFormWebPart.js",
+          "manifest": "./src/webparts/newRevalForm/NewRevalFormWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "RevalidationWebPartStrings": "lib/webparts/revalidation/loc/{locale}.js"
+    "RevalidationWebPartStrings": "lib/webparts/revalidation/loc/{locale}.js",
+    "NewRevalFormWebPartStrings": "lib/webparts/newRevalForm/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
   }
 }

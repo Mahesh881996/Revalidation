@@ -14,7 +14,7 @@ import { IList } from "@pnp/sp/lists";
 import "@pnp/sp/site-users/web";
 import { IAttachmentFileInfo } from "@pnp/sp/attachments";
 
-var _sp: SPFI = null;
+let _sp: SPFI = null;
 
 export const getSP = (context?: WebPartContext): SPFI => {
   if (_sp === null && context != null) {
@@ -25,9 +25,18 @@ export const getSP = (context?: WebPartContext): SPFI => {
   return _sp;
 };
 
+export const addAttachments = async(files:IAttachmentFileInfo[],itemId:number,listName:string) => {
+  let spcontext: SPFI = getSP();
+  const item = await spcontext.web.lists.getByTitle(listName).items.getById(itemId);
+  const [batchedSP, execute] = spcontext.batched();
+  files.map((file) => {
+    const files = item.attachmentFiles.add( file.name, file.content );
+  })
+  await execute();
+}
+
 export const createListItem = async (listName: string, body: any,files?:IAttachmentFileInfo[]) => {
   let spcontext: SPFI = getSP();
-
   try {
     let createdItem = await spcontext.web.lists
       .getByTitle(listName)
@@ -40,7 +49,25 @@ export const createListItem = async (listName: string, body: any,files?:IAttachm
     return createdItem;
   }
   catch (err) {
-    Promise.reject(err);
+    await Promise.reject(err);
+  }
+}
+
+export const updateListItem = async (listName: string, body: any, itemId:number,files?:IAttachmentFileInfo[]) => {
+  let spcontext: SPFI = getSP();
+  try {
+    let updatedItem = await spcontext.web.lists
+      .getByTitle(listName)
+      .items.getById(itemId)
+      .update(body).then(async r=>{
+        if(files){
+          await addAttachments(files,itemId,listName);
+        }
+      });
+    return updatedItem;
+  }
+  catch (err) {
+    await Promise.reject(err);
   }
 }
 
@@ -51,18 +78,8 @@ export const ensureUser = async (loginName: string) => {
     return userDetails;
   }
   catch (err) {
-    Promise.reject(err);
+    await Promise.reject(err);
   }
-}
-
-export const addAttachments = async(files:IAttachmentFileInfo[],itemId:number,listName:string) => {
-  let spcontext: SPFI = getSP();
-  const item = await spcontext.web.lists.getByTitle(listName).items.getById(itemId);
-  const [batchedSP, execute] = spcontext.batched();
-  files.map((file) => {
-    const files = item.attachmentFiles.add( file.name, file.content );
-  })
-  await execute();
 }
 
 export const getListItems = async(listName: string,select: string,lookup:string) => {
@@ -72,6 +89,17 @@ export const getListItems = async(listName: string,select: string,lookup:string)
     return allItems;
   }
   catch (err) {
-    Promise.reject(err);
+    await Promise.reject(err);
+  }
+}
+
+export const getListItemById = async(listName: string,select: string,lookup:string,itemId:number) => {
+  let spcontext: SPFI = getSP();
+  try{
+    let itemDetails = await spcontext.web.lists.getByTitle(listName).items.getById(itemId).select(select).expand(lookup)();
+    return itemDetails;
+  }
+  catch (err) {
+    await Promise.reject(err);
   }
 }

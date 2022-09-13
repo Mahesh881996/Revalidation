@@ -1162,10 +1162,10 @@ var CarouselComponent = /** @class */ (function (_super) {
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], { fluid: true },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"], { fade: true }, Object(lodash__WEBPACK_IMPORTED_MODULE_3__["uniq"])(this.props.carouselData).map(function (data) { return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"].Item, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: "full-width", src: "https://maheshofficelab.sharepoint.com/sites/Revalidation/Resources/Image1.jpg", alt: "First slide", height: "400" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { className: "full-width", src: JSON.parse(data.Image).serverRelativeUrl, alt: "First slide", height: "400" }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Carousel"].Caption, null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "First slide label"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Nulla vitae elit libero, a pharetra augue mollis interdum.")))); })))));
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, data.Title),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, data.Description)))); })))));
     };
     return CarouselComponent;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
@@ -27153,8 +27153,9 @@ function getDocumentRect(element) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "cDcd");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Services_SPOps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/SPOps */ "QRwU");
-/* harmony import */ var _Sections_Carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sections/Carousel/Carousel */ "1CfB");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "vS6h");
+/* harmony import */ var _Services_SPOps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Services/SPOps */ "QRwU");
+/* harmony import */ var _Sections_Carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sections/Carousel/Carousel */ "1CfB");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -27209,13 +27210,14 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var carouselList = "Carousel";
 var Revalidation = /** @class */ (function (_super) {
     __extends(Revalidation, _super);
     function Revalidation(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            carouselData: [],
+            carouselData: []
         };
         return _this;
     }
@@ -27224,7 +27226,7 @@ var Revalidation = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Object(_Services_SPOps__WEBPACK_IMPORTED_MODULE_1__["getListItems"])(carouselList, "*", "").then(function (result) {
+                    case 0: return [4 /*yield*/, Object(_Services_SPOps__WEBPACK_IMPORTED_MODULE_2__["getListItems"])(carouselList, "*", "").then(function (result) {
                             _this.setState({ "carouselData": result });
                         })];
                     case 1:
@@ -27240,7 +27242,25 @@ var Revalidation = /** @class */ (function (_super) {
     Revalidation.prototype.render = function () {
         var _a = this.props, description = _a.description, isDarkTheme = _a.isDarkTheme, environmentMessage = _a.environmentMessage, hasTeamsContext = _a.hasTeamsContext, userDisplayName = _a.userDisplayName;
         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Sections_Carousel_Carousel__WEBPACK_IMPORTED_MODULE_2__["default"], { carouselData: this.state.carouselData })));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], { bg: "light", expand: "lg" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, { href: "#home" }, "React-Bootstrap"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Toggle, { "aria-controls": "basic-navbar-nav" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Collapse, { id: "basic-navbar-nav" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], { className: "mr-auto" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, { href: "#home" }, "Home"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"].Link, { href: "#link" }, "Link"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"], { title: "Dropdown", id: "basic-nav-dropdown" },
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, { href: "#action/3.1" }, "Action"),
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, { href: "#action/3.2" }, "Another action"),
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, { href: "#action/3.3" }, "Something"),
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Divider, null),
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NavDropdown"].Item, { href: "#action/3.4" }, "Separated link"))),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], { inline: true },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], { type: "text", placeholder: "Search", className: "mr-sm-2" }),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], { variant: "outline-success" }, "Search"))))),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Sections_Carousel_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], { carouselData: this.state.carouselData }))));
     };
     return Revalidation;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
@@ -27590,16 +27610,18 @@ module.exports = invariant;
 /*!*******************************!*\
   !*** ./lib/Services/SPOps.js ***!
   \*******************************/
-/*! exports provided: getSP, createListItem, ensureUser, addAttachments, getListItems */
+/*! exports provided: getSP, addAttachments, createListItem, updateListItem, ensureUser, getListItems, getListItemById */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSP", function() { return getSP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createListItem", function() { return createListItem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ensureUser", function() { return ensureUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addAttachments", function() { return addAttachments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createListItem", function() { return createListItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateListItem", function() { return updateListItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ensureUser", function() { return ensureUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getListItems", function() { return getListItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getListItemById", function() { return getListItemById; });
 /* harmony import */ var _pnp_sp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/sp */ "UKGb");
 /* harmony import */ var _pnp_logging__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/logging */ "B3L+");
 /* harmony import */ var _pnp_sp_webs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pnp/sp/webs */ "6k7F");
@@ -27664,6 +27686,26 @@ var getSP = function (context) {
     }
     return _sp;
 };
+var addAttachments = function (files, itemId, listName) { return __awaiter(void 0, void 0, void 0, function () {
+    var spcontext, item, _a, batchedSP, execute;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                spcontext = getSP();
+                return [4 /*yield*/, spcontext.web.lists.getByTitle(listName).items.getById(itemId)];
+            case 1:
+                item = _b.sent();
+                _a = spcontext.batched(), batchedSP = _a[0], execute = _a[1];
+                files.map(function (file) {
+                    var files = item.attachmentFiles.add(file.name, file.content);
+                });
+                return [4 /*yield*/, execute()];
+            case 2:
+                _b.sent();
+                return [2 /*return*/];
+        }
+    });
+}); };
 var createListItem = function (listName, body, files) { return __awaiter(void 0, void 0, void 0, function () {
     var spcontext, createdItem, err_1;
     return __generator(this, function (_a) {
@@ -27672,7 +27714,7 @@ var createListItem = function (listName, body, files) { return __awaiter(void 0,
                 spcontext = getSP();
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 5]);
                 return [4 /*yield*/, spcontext.web.lists
                         .getByTitle(listName)
                         .items
@@ -27694,71 +27736,118 @@ var createListItem = function (listName, body, files) { return __awaiter(void 0,
                 return [2 /*return*/, createdItem];
             case 3:
                 err_1 = _a.sent();
-                Promise.reject(err_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [4 /*yield*/, Promise.reject(err_1)];
+            case 4:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
-var ensureUser = function (loginName) { return __awaiter(void 0, void 0, void 0, function () {
-    var spcontext, userDetails, err_2;
+var updateListItem = function (listName, body, itemId, files) { return __awaiter(void 0, void 0, void 0, function () {
+    var spcontext, updatedItem, err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 spcontext = getSP();
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 5]);
+                return [4 /*yield*/, spcontext.web.lists
+                        .getByTitle(listName)
+                        .items.getById(itemId)
+                        .update(body).then(function (r) { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    if (!files) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, addAttachments(files, itemId, listName)];
+                                case 1:
+                                    _a.sent();
+                                    _a.label = 2;
+                                case 2: return [2 /*return*/];
+                            }
+                        });
+                    }); })];
+            case 2:
+                updatedItem = _a.sent();
+                return [2 /*return*/, updatedItem];
+            case 3:
+                err_2 = _a.sent();
+                return [4 /*yield*/, Promise.reject(err_2)];
+            case 4:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    });
+}); };
+var ensureUser = function (loginName) { return __awaiter(void 0, void 0, void 0, function () {
+    var spcontext, userDetails, err_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                spcontext = getSP();
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 5]);
                 return [4 /*yield*/, spcontext.web.ensureUser(loginName)];
             case 2:
                 userDetails = _a.sent();
                 return [2 /*return*/, userDetails];
             case 3:
-                err_2 = _a.sent();
-                Promise.reject(err_2);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
-    });
-}); };
-var addAttachments = function (files, itemId, listName) { return __awaiter(void 0, void 0, void 0, function () {
-    var spcontext, item, _a, batchedSP, execute;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                spcontext = getSP();
-                return [4 /*yield*/, spcontext.web.lists.getByTitle(listName).items.getById(itemId)];
-            case 1:
-                item = _b.sent();
-                _a = spcontext.batched(), batchedSP = _a[0], execute = _a[1];
-                files.map(function (file) {
-                    var files = item.attachmentFiles.add(file.name, file.content);
-                });
-                return [4 /*yield*/, execute()];
-            case 2:
-                _b.sent();
-                return [2 /*return*/];
+                err_3 = _a.sent();
+                return [4 /*yield*/, Promise.reject(err_3)];
+            case 4:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
 var getListItems = function (listName, select, lookup) { return __awaiter(void 0, void 0, void 0, function () {
-    var spcontext, allItems, err_3;
+    var spcontext, allItems, err_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 spcontext = getSP();
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _a.trys.push([1, 3, , 5]);
                 return [4 /*yield*/, spcontext.web.lists.getByTitle(listName).items.select(select).expand(lookup).top(5000)()];
             case 2:
                 allItems = _a.sent();
                 return [2 /*return*/, allItems];
             case 3:
-                err_3 = _a.sent();
-                Promise.reject(err_3);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                err_4 = _a.sent();
+                return [4 /*yield*/, Promise.reject(err_4)];
+            case 4:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
+    });
+}); };
+var getListItemById = function (listName, select, lookup, itemId) { return __awaiter(void 0, void 0, void 0, function () {
+    var spcontext, itemDetails, err_5;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                spcontext = getSP();
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 5]);
+                return [4 /*yield*/, spcontext.web.lists.getByTitle(listName).items.getById(itemId).select(select).expand(lookup)()];
+            case 2:
+                itemDetails = _a.sent();
+                return [2 /*return*/, itemDetails];
+            case 3:
+                err_5 = _a.sent();
+                return [4 /*yield*/, Promise.reject(err_5)];
+            case 4:
+                _a.sent();
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
@@ -41251,7 +41340,7 @@ function triggerBrowserReflow(node) {
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/@microsoft/spfx-heft-plugins/node_modules/css-loader/dist/runtime/api.js */ "Z+AG")(false);
 // Module
-exports.push([module.i, "#CommentsWrapper,#sp-appBar,#spSiteHeader,[data-automation-id=pageHeader],footer{display:none}", ""]);
+exports.push([module.i, "#CommentsWrapper,#sp-appBar,#spSiteHeader,[data-automation-id=pageHeader],footer{display:none}.j_c_50a7110f{width:100%}.required:after{content:\" *\";color:red}", ""]);
 
 
 /***/ }),
